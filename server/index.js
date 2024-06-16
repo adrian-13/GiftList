@@ -1,29 +1,32 @@
-const express = require('express');
-const verifyProof = require('../utils/verifyProof');
+const express = require("express");
+const verifyProof = require("../utils/verifyProof");
+const { keccak256 } = require("ethereum-cryptography/keccak");
+const { root: MERKLE_ROOT } = require("../utils/example");
 
 const port = 1225;
 
 const app = express();
 app.use(express.json());
 
-// TODO: hardcode a merkle root here representing the whole nice list
-// paste the hex string in here, without the 0x prefix
-const MERKLE_ROOT = '';
+app.post("/gift", (req, res) => {
+  const { name, proof } = req.body;
 
-app.post('/gift', (req, res) => {
-  // grab the parameters from the front-end here
-  const body = req.body;
+  const leaf = keccak256(Buffer.from(name));
 
-  // TODO: prove that a name is in the list 
-  const isInTheList = false;
-  if(isInTheList) {
+  const isInTheList = verifyProof(
+    proof,
+    leaf,
+    "d320bfb1e8ece8fcc1ac8993bce779b0653b59467f47aac2623d535ce686d2a9"
+  );
+
+  if (isInTheList) {
     res.send("You got a toy robot!");
-  }
-  else {
+  } else {
     res.send("You are not on the list :(");
   }
 });
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
+  console.log(`Merkle Root: ${MERKLE_ROOT}`);
 });
