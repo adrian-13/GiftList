@@ -3,6 +3,9 @@
 To get started with the repository, clone it and then run `npm install` in the top-level directory to install the depedencies.
 
 There are three folders in this repository:
+- Client
+- Servers
+- Utils
 
 ## About the Project
 This project demonstrates the use of Merkle Trees for efficient and secure data verification. We are building an application where a client needs to prove to the server that a particular name is on a predefined "nice list" to receive a gift. Instead of storing the entire list on the server, we use a Merkle Tree to store a single root hash, making the verification process both efficient and secure. Additionally, we have added a simple user interface to make it easier for users to check if they are on the "nice list".
