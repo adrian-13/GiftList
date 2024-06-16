@@ -4,7 +4,7 @@ To get started with the repository, clone it and then run `npm install` in the t
 
 There are three folders in this repository:
 - Client
-- Servers
+- Server
 - Utils
 
 ## About the Project
