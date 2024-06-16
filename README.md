@@ -4,6 +4,28 @@ To get started with the repository, clone it and then run `npm install` in the t
 
 There are three folders in this repository:
 
+## About the Project
+This project demonstrates the use of Merkle Trees for efficient and secure data verification. We are building an application where a client needs to prove to the server that a particular name is on a predefined "nice list" to receive a gift. Instead of storing the entire list on the server, we use a Merkle Tree to store a single root hash, making the verification process both efficient and secure.
+
+## How It Works
+### 1. Client Side (Prover):
+- Loads the niceList.json.
+- Creates a Merkle Tree from the list.
+- Generates a proof for a specific name.
+- Sends the name and proof to the server.
+
+### 2.Server Side (Verifier):
+- Receives the name and proof from the client.
+- Verifies the proof using the Merkle root.
+- Responds with a message indicating whether the name is on the list or not.
+
+### 3. Merkle Tree and Proof Verification:
+- The Merkle Tree is created using the keccak256 hash of each name.
+- The proof is a set of hashes required to prove a name is part of the Merkle root.
+- Verification involves hashing the name and the proof to reconstruct the root.
+- This approach ensures that only names on the niceList can receive a gift, and the server doesn't need to store the entire list, just the Merkle root.   
+
+
 ## Client
 
 You can run the client from the top-level directory with `node client/index`. This file is a script which will send an HTTP request to the server.
