@@ -5,7 +5,7 @@ To get started with the repository, clone it and then run `npm install` in the t
 There are three folders in this repository:
 
 ## About the Project
-This project demonstrates the use of Merkle Trees for efficient and secure data verification. We are building an application where a client needs to prove to the server that a particular name is on a predefined "nice list" to receive a gift. Instead of storing the entire list on the server, we use a Merkle Tree to store a single root hash, making the verification process both efficient and secure.
+This project demonstrates the use of Merkle Trees for efficient and secure data verification. We are building an application where a client needs to prove to the server that a particular name is on a predefined "nice list" to receive a gift. Instead of storing the entire list on the server, we use a Merkle Tree to store a single root hash, making the verification process both efficient and secure. Additionally, we have added a simple user interface to make it easier for users to check if they are on the "nice list".
 
 ## How It Works
 ### 1. Client Side (Prover):
@@ -23,8 +23,24 @@ This project demonstrates the use of Merkle Trees for efficient and secure data 
 - The Merkle Tree is created using the keccak256 hash of each name.
 - The proof is a set of hashes required to prove a name is part of the Merkle root.
 - Verification involves hashing the name and the proof to reconstruct the root.
-- This approach ensures that only names on the niceList can receive a gift, and the server doesn't need to store the entire list, just the Merkle root.   
+- This approach ensures that only names on the niceList can receive a gift, and the server doesn't need to store the entire list, just the Merkle root.
 
+## User Interface
+
+We have added a simple user interface to make it easier for users to check if they are on the "nice list". Users can enter their name into a form on the web page and click "Check" to see if they are on the list and eligible for a gift.
+
+### How to Access the User Interface:
+
+### 1. Run the Server:
+- Ensure you are in the top-level directory and run:  
+`node server/index.js`
+
+### 2. Open the Web Interface:
+- Open your browser and navigate to:  
+`http://localhost:1225`
+
+### 3. Check Your Name:
+- Enter your name into the form and click "Check" to see if you are on the list.
 
 ## Client
 
